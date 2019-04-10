@@ -1,0 +1,14 @@
+
+
+<a href="<%= comment_url(comment)%>"><%= comment.content%></a>
+    <ul>
+    <%if comment.child_comments%>
+        <% comment.child_comments.each do |child|%>
+            <% if child.child_comments.nil? %>
+                <li><%=child.content%></li>
+            <% else %>
+                <li><%= render partial: "comments/comment", locals: { comment: child} %></li>
+            <% end %>
+        <% end %>
+    <%end%>
+    </ul>

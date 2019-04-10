@@ -1,0 +1,22 @@
+<h3> <a href="<%= @post.url %>"><%= @post.title %></a> by: <%= @post.author.username %></h3>
+<br>
+<%= @post.content %> 
+<br>
+
+<h4>Comments</h4>
+
+<ul>
+    <% @all_comments[nil].each do |comment|%>
+        <li><%= render partial: "comments/even_faster_comment", locals: {all_comments: @all_comments, comment: comment} %></li>
+        <br>
+
+    <% end %>
+</ul>
+
+
+<a href="<%= new_post_comment_url(@post) %>">Comment on this post!</a>
+<br>
+
+<% if current_user.id == @post.author_id %>
+    <a href="<%= edit_post_url(@post) %>">Edit Post</a>
+<% end %>

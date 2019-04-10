@@ -1,0 +1,12 @@
+
+
+<a href="<%= comment_url(comment)%>"><%= comment.content%></a>
+<%= comment.author.username %>
+<span style="color: gray; font-size:6px;"><%= comment.created_at %></span>
+    <ul>
+
+    <% all_comments[comment.id].each do |c2|%>
+        <li><%= render partial: "comments/even_faster_comment", locals: {all_comments:all_comments, comment: c2}  %></li>
+    <% end %>
+
+</ul>

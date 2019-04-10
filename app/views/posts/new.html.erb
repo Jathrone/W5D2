@@ -1,0 +1,30 @@
+<h3> Create new post! </h3>
+
+<form action="<%=posts_url%>" method="post">
+    <%= auth_token%>
+    <label>Title
+        <input type="text" name="post[title]" value="">
+    </label>
+    <br>
+    <label>URL (optional)
+        <input type="text" name="post[url]" value="">
+    </label>
+    <br>
+    <label>Content
+        <textarea name="post[content]" id="" cols="30" rows="10"></textarea>
+    </label>
+    <br>
+    Post to: 
+    <br>
+    <label>
+        <input type="hidden" name="post[sub_ids][]" value="">
+    </label>
+    <% Sub.all.each do |sub| %>
+        <label> <%= sub.title %>
+            <input type="checkbox" name="post[sub_ids][]" value="<%= sub.id %>">
+        </label>
+    <% end %>
+    <br>
+    <input type="submit" value="Make a Post">
+
+</form>
